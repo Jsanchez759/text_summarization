@@ -18,7 +18,7 @@ jobs:
       - name: Add remote
         env:
           HF_TOKEN: ${{ secrets.HF }}
-        run: git remote add space git clone https://huggingface.co/spaces/Jsanchez759/text_summary
+        run: git clone https://huggingface.co/spaces/Jsanchez759/text_summary
       - name: Deploy to huggingface space
         env:
           HF_TOKEN: ${{ secrets.HF }}
