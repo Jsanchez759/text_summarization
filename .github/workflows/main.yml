@@ -24,12 +24,6 @@ jobs:
           HF_TOKEN: ${{ secrets.HF }}
         run: git clone https://huggingface.co/spaces/Jsanchez759/text_summary space_repo
 
-      # Step 3: Copy changes to the cloned space
-      - name: Copy Changes to Space Repository
-        run: |
-          cp -r * space_repo/
-          cd space_repo
-
       # Step 4: Commit and push changes to Hugging Face Space
       - name: Commit and Push Changes
         env:
