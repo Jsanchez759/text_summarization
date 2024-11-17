@@ -1,0 +1,25 @@
+name: CI - Deploy to huggingface space
+
+on: # run on push or pull request to main branch
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    
+  workflow_dispatch: # to able run this code manually
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add remote
+        env:
+          HF_TOKEN: ${{ secrets.HF }}
+        run: git remote add space git clone https://huggingface.co/spaces/Jsanchez759/text_summary
+      - name: Deploy to huggingface space
+        env:
+          HF_TOKEN: ${{ secrets.HF }}
+        run: git push https://huggingface.co/spaces/Jsanchez759/text_summary
