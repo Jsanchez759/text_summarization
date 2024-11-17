@@ -23,6 +23,11 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF }}
         run: git clone https://huggingface.co/spaces/Jsanchez759/text_summary space_repo
+        
+      - name: Configure Git Identity
+        run: |
+          git config --global user.email "ci-bot@github.com"
+          git config --global user.name "GitHub Actions Bot"
 
       # Step 4: Commit and push changes to Hugging Face Space
       - name: Commit and Push Changes
