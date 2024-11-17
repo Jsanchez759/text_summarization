@@ -22,7 +22,7 @@ jobs:
       - name: Clone Hugging Face Space
         env:
           HF_TOKEN: ${{ secrets.HF }}
-        run: git clone https://huggingface.co/spaces/Jsanchez759/text_summary space_repo
+        run: git clone https://huggingface.co/spaces/Jsanchez759/text_summary
         
       - name: Configure Git Identity
         run: |
