@@ -34,7 +34,6 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF }}
         run: |
-          cd space_repo
           git add -u
           git commit -m "Deploy updated files to Hugging Face Space"
           git push https://huggingface.co/spaces/Jsanchez759/text_summary
