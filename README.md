@@ -1,6 +1,6 @@
 ---
 title: Summary test app
-emoji: 
+emoji: :smiley:
 colorFrom: red
 colorTo: red
 sdk: gradio
