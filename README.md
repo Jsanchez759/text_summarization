@@ -1,2 +1,2 @@
 # text_summarization
-text_summarization_end_to_end
+Code to develop a end to end summarization project
