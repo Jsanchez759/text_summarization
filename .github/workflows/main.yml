@@ -19,6 +19,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          lfs: true
 
       # Step 2: Clone the Hugging Face Space
       - name: Clone Hugging Face Space
@@ -34,8 +35,9 @@ jobs:
       # Step 4: Commit and push changes to Hugging Face Space
       - name: Commit and Push Changes
         env:
-          HF: ${{ secrets.HF }}
-        run: git push --force https://$HF@huggingface.co/spaces/Jsanchez759/text_summary main
+          HF_TOKEN: ${{ secrets.HF }}
+        run: git push --force https://Jsanchez759:$HF_TOKEN@huggingface.co/spaces/Jsanchez759/text_summary main
+        #git push --force https://$HF@huggingface.co/spaces/Jsanchez759/text_summary main
           # git add -u
           # git commit -m "Deploy updated files to Hugging Face Space"
           
