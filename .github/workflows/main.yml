@@ -1,27 +1,41 @@
-name: CI - Deploy to huggingface space
+name: CI - Deploy to Hugging Face Space
 
-on: # run on push or pull request to main branch
+on: # Trigger workflows on events
   push:
     branches:
       - main
   pull_request:
     branches:
       - main
-    
-  workflow_dispatch: # to able run this code manually
+  workflow_dispatch: # Allow manual triggering of the workflow
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Add remote
+      # Step 1: Check out the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Step 2: Clone the Hugging Face Space
+      - name: Clone Hugging Face Space
         env:
           HF_TOKEN: ${{ secrets.HF }}
-        run: git clone https://huggingface.co/spaces/Jsanchez759/text_summary
-      - name: Deploy to huggingface space
+        run: git clone https://huggingface.co/spaces/Jsanchez759/text_summary space_repo
+
+      # Step 3: Copy changes to the cloned space
+      - name: Copy Changes to Space Repository
+        run: |
+          cp -r * space_repo/
+          cd space_repo
+
+      # Step 4: Commit and push changes to Hugging Face Space
+      - name: Commit and Push Changes
         env:
           HF_TOKEN: ${{ secrets.HF }}
-        run: git add -u
-        run: git commit -m "files"
-        run: git push https://huggingface.co/spaces/Jsanchez759/text_summary
+        run: |
+          cd space_repo
+          git add -u
+          git commit -m "Deploy updated files to Hugging Face Space"
+          git push https://huggingface.co/spaces/Jsanchez759/text_summary
