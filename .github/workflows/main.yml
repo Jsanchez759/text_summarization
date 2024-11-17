@@ -33,7 +33,7 @@ jobs:
       - name: Commit and Push Changes
         env:
           HF_TOKEN: ${{ secrets.HF }}
-        run: |
-          git add -u
-          git commit -m "Deploy updated files to Hugging Face Space"
-          git push https://huggingface.co/spaces/Jsanchez759/text_summary
+        run: git push --force https://huggingface.co/spaces/Jsanchez759/text_summary main
+          # git add -u
+          # git commit -m "Deploy updated files to Hugging Face Space"
+          
